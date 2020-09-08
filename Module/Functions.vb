@@ -25,11 +25,18 @@ Module Functions
         '    Console.ReadLine()
         'Next
 
-        AccumulateMessage("hello steve Yobs")
-        AccumulateMessage("bad numbers!")
-        AccumulateMessage("uername pls")
+        AccumulateMessage("hello steve Yobs", False)
+        AccumulateMessage("bad numbers!", False)
+        AccumulateMessage("uername pls", False)
         'MsgBox(AccumulateMessage(""))
-        Console.WriteLine()
+        MsgBox(AccumulateMessage("", False))
+        Console.ReadLine()
+        MsgBox(AccumulateMessage("", True))
+        AccumulateMessage("", True)
+        'add New stuff 
+        AccumulateMessage("new stuff......", False)
+        MsgBox(AccumulateMessage("", False))
+        Console.ReadLine()
     End Sub
 
     Function Letter() As String
@@ -54,11 +61,22 @@ Module Functions
         Return total
     End Function
 
-    Function AccumulateMessage(ByVal newMessage As String) As String
+    Function AccumulateMessage(ByVal newMessage As String, ByVal clear As Boolean) As String
         Static userMessage As String
-        userMessage &= newMessage & vbNewLine
-        Return userMessage
 
+        If clear = True Then
+            userMessage = ""
+        Else
+            userMessage &= newMessage & vbNewLine
+
+        End If
+
+        Return userMessage
     End Function
+
+
+
+
+
 
 End Module
